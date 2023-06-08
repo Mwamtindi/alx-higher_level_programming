@@ -9,5 +9,5 @@ if __name__ == "__main__":
         print("1 argument:")
     else:
         print("{} arguments:".format(tally))
-        for t in range(tally):
-            print("{}: {}".format(t + 1, sys.argv[t + 1]))
+    for t in range(tally):
+        print("{}: {}".format(t + 1, sys.argv[t + 1]))
