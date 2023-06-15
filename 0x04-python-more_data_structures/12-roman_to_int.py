@@ -11,7 +11,7 @@ def roman_to_int(roman_string):
         'D': 500,
         'M': 1000
     }
-    rom= [roman_dictn[x] for x in roman_string]
+    rom = [roman_dictn[x] for x in roman_string]
     output = 0
     for i in range(len(rom)):
         output += rom[i]
