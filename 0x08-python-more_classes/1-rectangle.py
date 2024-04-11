@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""A module containing rectangle class"""
 class Rectangle:
     """Class defining rectangle based on 0-rectangle.py"""
 
