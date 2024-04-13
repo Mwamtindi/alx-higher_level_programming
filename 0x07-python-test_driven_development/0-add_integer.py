@@ -2,6 +2,7 @@
 
 """integers addition in unittest"""
 
+
 def add_integer(a, b=98):
     """Result of integer addition of a and b.
 
