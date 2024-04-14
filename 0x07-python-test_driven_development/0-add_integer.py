@@ -4,23 +4,29 @@
 
 
 def add_integer(a, b=98):
-    """Result of integer addition of a and b.
+    """Add two integers or floats and return the result as an integer.
 
-    Perform check to know if a and b are ints before addition
+    Args:
+        a (int, float): The first number.
+        b (int, float): The second number.
+
     Raises:
-    TypeError: if one of them is non-integer or float
-    OverflowError: if the addition result exceeds the max integer value
-    ValueError: if one of the values is a float NaN
-    """
+        TypeError: If either `a` or `b` is not an integer or float.
+        OverflowError: If the result of the addition exceeds the maximum integer value.
+        ValueError: If either `a` or `b` is a float NaN.
 
+    Returns:
+        int: The result of the addition.
+    """
     if not (isinstance(a, int) or isinstance(a, float)):
-        raise TypeError("a must be an integer")
+        raise TypeError("a must be an integer or float")
     if not (isinstance(b, int) or isinstance(b, float)):
-        raise TypeError("b must be an integer")
+        raise TypeError("b must be an integer or float")
 
     try:
         return int(a) + int(b)
     except OverflowError:
-        raise OverflowError("integer addition large to convert to int")
+        raise OverflowError("integer addition result is too large to convert to int")
     except ValueError:
         raise ValueError("cannot convert float NaN to integer")
+
