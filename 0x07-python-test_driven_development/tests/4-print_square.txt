@@ -1,0 +1,52 @@
+Test Case
+
+size: is the size length of the square
+size must be an integer, TypeError: size must be an integer
+if size < 0 ValueError: message size must be >= 0
+if size is a float < 0, TypeError: size must be an integer
+
+
+import our module:
+>>> print_square = __import__('4-print_square').print_square
+
+Basic:
+>>> print_square(8)
+#########
+#########
+#########
+#########
+#########
+#########
+#########
+#########
+>>> print("")
+
+>>> print_square(4)
+###
+###
+###
+###
+
+Using negative value:
+>>> print_square(-2)
+Traceback (most recent call last):
+  ...
+    raise ValueError("size must be >= 0")
+ValueError: size must be >= 0
+
+using a letter:
+>>> print_square(h)
+Traceback (most recent call last):
+  ...
+NameError: name 'h' is not defined
+
+Using Float and negative value:
+>>> print_square(-2.0)
+  ...
+    raise TypeError("size must be an integer")
+TypeError: size must be an integer
+
+Null:
+>>> print_square()
+Traceback (most recent call last):
+TypeError: print_square() missing 1 required positional argument: 'size'
