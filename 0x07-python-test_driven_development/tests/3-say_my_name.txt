@@ -20,7 +20,7 @@ without using ""
 >>> say_my_name(Kijana, 54)
 Traceback (most recent call last):
   ...
-NameError: name 'kijana' is not defined
+NameError: name 'Kijana' is not defined
 
 Using integers:
 >>> say_my_name(2, 54)
