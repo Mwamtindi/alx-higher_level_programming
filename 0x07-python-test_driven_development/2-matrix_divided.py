@@ -1,24 +1,24 @@
 #!/usr/bin/python3
-"""matrix_divided - divides a specified matrix by div(division) number"""
+"""matrix_divided - divides a matrix by div number"""
 
 
 def matrix_divided(matrix, div):
     """
     Args:
-        Each row of the matrix must be of the same size
+        Each row of  matrix must have same size
         matrix must be a list of lists of integers or floats
-        div must be a number (integer or float)
-        div can’t be equal to 0
+        div must be a number (int or float)
+        div cannot be equal to 0
 
     Raises:
         TypeError:
-            matrix must be a matrix (list of lists) of integers/floats
-            Each row of the matrix must have the same size
-            div must be a number
+            matrix must be a matrix  of integers or floats
+            Each row of the matrix must have  same size
+            div must be a number(int or float)
         ZeroDivisionError:
             division by zero
 
-    Returns: a new matrix rounded to 2 decimal places
+    Returns: a new matrix rounded to 2 d.p
     """
 
     result_matrix = []
