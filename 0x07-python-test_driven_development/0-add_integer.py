@@ -21,6 +21,6 @@ def add_integer(a, b=98):
     try:
         return int(a) + int(b)
     except OverflowError:
-        raise OverflowError("integer addition result is too large to convert to int")
+        raise OverflowError("integer addition large to convert to int")
     except ValueError:
         raise ValueError("cannot convert float NaN to integer")
