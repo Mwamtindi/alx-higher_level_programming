@@ -3,16 +3,16 @@
 
 
 def print_stats(size, status_codes):
-    """Print accumulated metrics.
+    """Print computed metrics.
     Args:
-        size (int): The accumulated read file size.
-        status_codes (dict): The accumulated count of status codes.
+        size: Computed read file size.
+        status_codes: Computed count of status codes.
     """
-    print("File size: {}".format(size))
+    print("Total file size: {}".format(size))
     for key in sorted(status_codes):
         print("{}: {}".format(key, status_codes[key]))
 
-if __name__ == "__main__":
+if __name__ is "__main__":
     import sys
 
     size = 0
@@ -31,7 +31,7 @@ if __name__ == "__main__":
             line = line.split()
 
             try:
-                size += int(line[-1])  # Accumulate file size
+                size += int(line[-1])
             except (IndexError, ValueError):
                 pass
 
