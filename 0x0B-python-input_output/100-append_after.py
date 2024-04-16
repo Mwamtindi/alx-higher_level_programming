@@ -11,11 +11,12 @@ def append_after(filename="", search_string="", new_string=""):
     - search_string: String to search for in each line.
     - new_string: String to append after each line containing search string.
     """
-    with open(filename, "r") as file:
-        lines = file.readlines()
-
-    with open(filename, "w") as file:
-        for line in lines:
-            file.write(line)
+    text = ""
+    with open(filename, "r") as r:
+        for line in r:
+            text += line
             if search_string in line:
-                file.write(new_string + "\n")
+                text += new_string
+
+    with open(filename, "w") as w:
+        w.write(text)
