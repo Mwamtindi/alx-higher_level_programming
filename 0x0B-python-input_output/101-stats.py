@@ -2,7 +2,7 @@
 """A module containing script that reads stdin line by line."""
 
 
-def print_stats(size, status_codes):
+def print_metrics(size, status_codes):
     """Print accumulated metrics.
     Args:
         size (int): The accumulated read file size.
@@ -15,6 +15,7 @@ def print_stats(size, status_codes):
 if __name__ == "__main__":
     import sys
 
+
     size = 0
     status_codes = {}
     valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
@@ -23,7 +24,7 @@ if __name__ == "__main__":
     try:
         for line in sys.stdin:
             if count == 10:
-                print_stats(size, status_codes)
+                print_metrics(size, status_codes)
                 count = 1
             else:
                 count += 1
@@ -44,8 +45,8 @@ if __name__ == "__main__":
             except IndexError:
                 pass
 
-        print_stats(size, status_codes)
+        print_metrics(size, status_codes)
 
     except KeyboardInterrupt:
-        print_stats(size, status_codes)
+        print_metrics(size, status_codes)
         raise
