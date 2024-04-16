@@ -3,7 +3,6 @@
 
 
 import json
-"""Import json module."""
 
 def to_json_string(my_obj):
     """Returns JSON rep of an object"""
