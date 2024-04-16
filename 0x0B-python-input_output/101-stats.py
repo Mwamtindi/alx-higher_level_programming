@@ -13,7 +13,6 @@ def print_metrics(size, status_codes):
         print("{}: {}".format(key, status_codes[key]))
 
 if __name__ == "__main__":
-
     import sys
 
 
@@ -24,7 +23,7 @@ if __name__ == "__main__":
 
     try:
         for line in sys.stdin:
-            if count == 10:
+            if count is 10:
                 print_metrics(size, status_codes)
                 count = 1
             else:
