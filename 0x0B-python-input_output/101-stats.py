@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""A module containing script that reads stdin line by line."""
+"""A script that reads stdin line by line and computes metrics."""
+
+import sys
 
 
 def print_metrics(size, status_codes):
@@ -12,10 +14,8 @@ def print_metrics(size, status_codes):
     for key in sorted(status_codes):
         print("{}: {}".format(key, status_codes[key]))
 
+
 if __name__ == "__main__":
-    import sys
-
-
     size = 0
     status_codes = {}
     valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     try:
         for line in sys.stdin:
-            if count is 10:
+            if count == 10:
                 print_metrics(size, status_codes)
                 count = 1
             else:
