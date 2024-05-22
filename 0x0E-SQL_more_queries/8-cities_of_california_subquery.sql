@@ -1,5 +1,5 @@
 -- lists all the cities of California found in db hbtn_0d_usa
--- states contain one record name=California, Result ASC.
+-- states contain one record name=California, Result ASC no JOIN.
 USE hbtn_0d_usa;
 SELECT * FROM `cities`
 WHERE `state_id` = (
