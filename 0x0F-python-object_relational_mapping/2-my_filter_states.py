@@ -13,7 +13,7 @@ if __name__ == '__main__':
     provided arg, sort them by ID and prints them.
     """
     db_connection = db.connect(host="localhost", port=3306,
-                            user=argv[1], passwd=argv[2], db=argv[3])
+                               user=argv[1], passwd=argv[2], db=argv[3])
     cursor = db_connection.cursor()
 
     cursor.execute(
