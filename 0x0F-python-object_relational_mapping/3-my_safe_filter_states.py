@@ -13,8 +13,9 @@ if __name__ == "__main__":
     Connects to the db, retrieves all states where the name matches the
     provided arg, sorts them by ID and prints them.
     """
-    db_connection = db.connect(host="localhost", port=3306,
-            user=argv[1], passwd=argv[2], db=argv[3])
+    db_connection = db.connect(
+            host="localhost", port=3306, user=argv[1], passwd=argv[2],
+            db=argv[3])
 
     cursor = db_connection.cursor()
     cursor.execute(
