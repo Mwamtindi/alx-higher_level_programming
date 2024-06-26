@@ -17,6 +17,7 @@ if __name__ == '__main__':
     for all State objects, outer joining with City objects and Prints each
     State and its associated Cities in a formatted output.
     """
+
     database_url = 'mysql+mysqldb://{}:{}@localhost:3306/{}'. format(
         sys.argv[1], sys.argv[2], sys.argv[3])
     db_engine = create_engine(database_url, pool_pre_ping=True)
