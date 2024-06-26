@@ -26,8 +26,9 @@ if __name__ == "__main__":
     db_session = SessionMaker()
 
     states_to_delete = db_session.query(State).filter(State.name.contains('a'))
-    for state in states_to_delete:
-        db_session.delete(state)
+    if states_to_delete is not None:
+        for state in states_to_delete:
+            db_session.delete(state)
 
     db_session.commit()
 
