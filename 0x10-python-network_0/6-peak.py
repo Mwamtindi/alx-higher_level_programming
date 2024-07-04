@@ -5,6 +5,7 @@ peak_finder.py file
 A module to find a peak in a list of unsorted integers using binary search.
 """
 
+
 def find_peak(list_of_integers):
     """
     Fxn that finds peak in list of unsorted integers using binary search.
