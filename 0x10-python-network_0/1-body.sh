@@ -1,3 +1,3 @@
 #!/bin/bash
 # A script that takes in URL, sends a GET request to URL, and displays the body
-if [ "$(curl -s -o /dev/null -w '%{http_code}' "$1")" -eq 200 ]; then curl -s "$1"; fi
+curl -s -w "%{http_code}\n" "$1" | grep -q "200" && curl -s "$1"
