@@ -27,12 +27,13 @@ if __name__ == "__main__":
         sys.argv[1], sys.argv[2], sys.argv[3])
     db_engine = create_engine(database_url, pool_pre_ping=True)
     Base.metadata.create_all(db_engine)
-    
+
     SessionMaker = sessionmaker(bind=db_engine)
     db_session = SessionMaker()
-    
-    states_query = db_session.query(State).outerjoin(City).order_by(State.id, City.id).all()
-    
+
+    states_query = db_session.query(State).outerjoin(City).
+    order_by(State.id, City.id).all()
+
     for state in states_query:
         print("{}: {}".format(state.id, state.name))
         for city in state.cities:
