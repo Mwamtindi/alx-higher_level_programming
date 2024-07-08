@@ -31,8 +31,7 @@ if __name__ == "__main__":
     SessionMaker = sessionmaker(bind=db_engine)
     db_session = SessionMaker()
 
-    states_query =
-    db_session.query(State).outerjoin(City).order_by(State.id, City.id).all()
+    states_query = db_session.query(State).outerjoin(City).order_by(State.id, City.id).all()
 
     for state in states_query:
         print("{}: {}".format(state.id, state.name))
