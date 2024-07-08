@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """
 A script that lists all City objects from the database hbtn_0e_101_usa
+The script connects to a MySQL database using SQLAlchemy,
+along with their associated State information, and displays the results.
 """
 import sys
 from relationship_state import Base, State
