@@ -10,7 +10,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     """
     Connect to the database, creates database tables if they don't exist,
     initializes a SQLAlchemy session for db interactions, queries the db
