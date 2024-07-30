@@ -3,9 +3,9 @@
 const request = require('request');
 
 // Get the API URL from the command line arguments
-const aapiUrl = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`;
+const apiUrl = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}/`;
 
-request(aapiUrl, function (error, response, body) {
+request(apiUrl, function (error, response, body) {
   if (!error && response.statusCode === 200) {
     const charactersUrls = JSON.parse(body).characters;
 
