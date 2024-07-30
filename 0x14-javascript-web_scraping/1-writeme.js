@@ -6,7 +6,7 @@ const filePath = process.argv[2];
 const content = process.argv[3];
 
 if (!filePath || !content) {
-  console.error('Usage: ./1-writeme.js <file_path> <content>');
+  console.error('Error: Both the file path and content should be given');
   process.exit(1);
 }
 
@@ -15,6 +15,6 @@ fs.writeFile(filePath, content, 'utf-8', (err) => {
   if (err) {
     console.error(err);
   } else {
-    console.log(`Content written to ${filePath}`);
+    console.log('File written successful');
   }
 });
