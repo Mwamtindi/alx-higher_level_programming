@@ -2,36 +2,35 @@
 
 const request = require('request');
 
-// Get API URL from the command line arguments
+// Get the API URL from the command line arguments
 const apiUrl = process.argv[2];
 
 if (!apiUrl) {
-  console.error('Usage: ./6-taskcount.js <api_url>');
+  console.error('Error: The API URL not provided.');
   process.exit(1);
 }
 
-// Fetch tasks from the API
 request.get(apiUrl, (error, response, body) => {
   if (error) {
-    console.error('Error:', error);
-    process.exit(1);
-  }
+    console.error(error);
+  } else {
+    if (response.statusCode === 200) {
+      const todos = JSON.parse(body);
+      const completedTasksByUser = {};
 
-  const tasks = JSON.parse(body);
-  const userTaskCount = {};
+      todos.forEach((todo) => {
+        if (todo.completed) {
+          if (completedTasksByUser[todo.userId]) {
+            completedTasksByUser[todo.userId]++;
+          } else {
+            completedTasksByUser[todo.userId] = 1;
+          }
+        }
+      });
 
-  // Count completed tasks by user ID
-  tasks.forEach(task => {
-    if (task.completed) {
-      if (!userTaskCount[task.userId]) {
-        userTaskCount[task.userId] = 0;
-      }
-      userTaskCount[task.userId]++;
+      console.log(completedTasksByUser);
+    } else {
+      console.error(`Error: Failed to retrieve the data. Status code: ${response.statusCode}`);
     }
-  });
-
-  // Print users with at least one completed task
-  Object.entries(userTaskCount).forEach(([userId, count]) => {
-    console.log(`User ${userId}: ${count} completed tasks`);
-  });
+  }
 });
