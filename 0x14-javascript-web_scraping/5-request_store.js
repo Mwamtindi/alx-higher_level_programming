@@ -3,29 +3,26 @@
 const request = require('request');
 const fs = require('fs');
 
-// Get URL and file path from command line arguments
+// Get the URL and file path from the command line arguments
 const url = process.argv[2];
 const filePath = process.argv[3];
 
 if (!url || !filePath) {
-  console.error('Usage: ./5-savewebpage.js <url> <file_path>');
+  console.error('Error: Both URL and file path must be provided.');
   process.exit(1);
 }
 
-// Perform GET request to the URL
+// Perform a GET request to the URL
 request.get(url, (error, response, body) => {
   if (error) {
-    console.error('Error:', error);
-    process.exit(1);
+    console.error(error);
+  } else {
+    fs.writeFile(filePath, body, 'utf8', (writeError) => {
+      if (writeError) {
+        console.error(writeError);
+      } else {
+        console.log('File writen successful.');
+      }
+    });
   }
-
-  // Write response body to the file
-  fs.writeFile(filePath, body, 'utf-8', (err) => {
-    if (err) {
-      console.error('Error writing to file:', err);
-      process.exit(1);
-    } else {
-      console.log(`Content saved to ${filePath}`);
-    }
-  });
 });
