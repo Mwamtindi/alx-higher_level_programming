@@ -2,60 +2,28 @@
 
 const request = require('request');
 
-// Get API URL from the command line arguments
+// Get the URL and file path from the command line arguments
 const apiUrl = process.argv[2];
 
 if (!apiUrl) {
-  console.error('Usage: ./4-wedgecount.js <api_url>');
+  console.error('Error: The API URL not provided.');
   process.exit(1);
 }
 
-// A function to check if Wedge Antilles is in the movie
-const isWedgeInMovie = (film, callback) => {
-  request.get(film, (error, response, body) => {
-    if (error) {
-      console.error('Error:', error);
-      return callback(error);
-    }
+const characterId = 18;
 
-    const data = JSON.parse(body);
-    if (data.characters && data.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')) {
-      callback(null, true);
-    } else {
-      callback(null, false);
-    }
-  });
-};
-
-// Fetch list of films
 request.get(apiUrl, (error, response, body) => {
   if (error) {
-    console.error('Error:', error);
-    process.exit(1);
+    console.error(error);
+  } else {
+    if (response.statusCode === 200) {
+      const filmsData = JSON.parse(body);
+      const moviesWithCharacter = filmsData.results.filter((film) =>
+        film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
+      );
+      console.log(moviesWithCharacter.length);
+    } else {
+      console.error(`Error: Failed to retrieve the movies data. Status code: ${response.statusCode}`);
+    }
   }
-
-  const data = JSON.parse(body);
-  if (!data.results || !Array.isArray(data.results)) {
-    console.error('Invalid data format');
-    process.exit(1);
-  }
-
-  let count = 0;
-  let pendingRequests = data.results.length;
-
-  data.results.forEach(film => {
-    isWedgeInMovie(film.characters[0], (err, isInMovie) => {
-      if (err) {
-        console.error('Error:', err);
-      } else if (isInMovie) {
-        count++;
-      }
-
-      pendingRequests--;
-
-      if (pendingRequests === 0) {
-        console.log(count);
-      }
-    });
-  });
 });
