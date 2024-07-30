@@ -11,9 +11,9 @@ if (!filePath || !content) {
 }
 
 // Write the string to the file
-fs.writeFile(filePath, content, 'utf-8', (err) => {
-  if (err) {
-    console.error(err);
+fs.writeFile(filePath, content, 'utf-8', (error) => {
+  if (error) {
+    console.error(error);
   } else {
     console.log('File written successful');
   }
