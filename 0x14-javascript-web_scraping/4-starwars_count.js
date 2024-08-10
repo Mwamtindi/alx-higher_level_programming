@@ -1,22 +1,21 @@
 #!/usr/bin/node
 
 const request = require('request');
+let numb = 0;
 
 // Get the URL and file path from the command line arguments
-const apiUrl = process.argv[2];
-
-const characterId = 18;
-
-request(apiUrl, (errr, response, body) => {
-  if (errr) {
-    console.error(errr);
+request.get(process.argv[2], (error, response, body) => {
+  if (error) {
+    console.log(error);
   } else {
-    const filmsData = JSON.parse(body).results;
-    const moviesWithWedge = filmsData.filter((film) =>
-      film.characters.includes(
-        `https://swapi-api.alx-tools.com/api/people/${characterId}/`
-      )
-    );
-    console.log(moviesWithWedge.length);
+    const content = JSON.parse(body);
+    content.results.forEach((film) => {
+      film.characters.forEach((character) => {
+        if (character.includes(18)) {
+          numb += 1;
+        }
+      });
+    });
+    console.log(numb);
   }
 });
